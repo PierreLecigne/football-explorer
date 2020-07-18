@@ -1,0 +1,47 @@
+version: "3.8"
+services:
+
+  server:
+    restart: always
+    build: server
+    ports:
+      - "3000:3000"
+    networks:
+      - backend
+    container_name: fdj-server-container
+
+  db:
+    image: mongo:4.2
+    ports:
+      - "27017:27017"
+    networks:
+      - backend
+    container_name: fdj-db-container
+
+  # db_seed:
+  #   image: mongo:4.2
+  #   networks:
+  #     - backend
+  #   container_name: fdj-db-seed-container
+  #   depends_on:
+  #     - db
+  #   restart: on-failure
+  #   volumes:
+  #     - "dump:/db/sports"
+  #   command: mongorestore dump/ --db=football_explorer --drop
+
+  app:
+    restart: always
+    build: app
+    ports:
+      - "4200:4200"
+    networks:
+      - frontend
+    container_name: fdj-app-container
+
+networks:
+  frontend:
+  backend:
+
+volumes:
+  dump:
