@@ -10,8 +10,8 @@ services:
       - backend
     container_name: fdj-server-container
     volumes:
-      - ./server/src:/usr/src/app/src
-      - ./server/nodemon.json:/usr/src/app/nodemon.json
+      - "/usr/src/app/node_modules"
+      - "./server:/usr/src/app/"
 
   db:
     image: mongo:4.2
@@ -32,6 +32,9 @@ services:
     networks:
       - frontend
     container_name: fdj-app-container
+    volumes:
+      - "/usr/src/app/node_modules"
+      - "./app:/usr/src/app/"
 
 networks:
   frontend:

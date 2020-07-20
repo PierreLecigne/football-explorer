@@ -15,3 +15,4 @@ To generate the API documentation, run the following command:
 npm run doc:generate
 ```
 Then, open the `/server/apidoc/index.html` file in your browser.
+Note: The API doc has not been integrated in the Docker container. To generate the API doc, you need to have Node and Npm installed, and the dependencies installed locally (not only in the Docker container).
