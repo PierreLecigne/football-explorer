@@ -1,0 +1,18 @@
+html {
+  font-size: 100%; // 1rem = 16px
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-size: $font-size-base;
+  text-rendering: optimizeLegibility !important; // stylelint-disable-line declaration-no-important
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-decoration-skip-ink: auto;
+}

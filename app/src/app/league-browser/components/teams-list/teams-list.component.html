@@ -1,0 +1,20 @@
+<div class="teamsList">
+  <ng-container *ngIf="teams; else noLeagueSelected">
+    <ng-container *ngIf="teams.length > 0; else noTeamsInLeague">
+      <div class="row justify-content-between">
+        <div class="col-6 col-md-4 col-lg-3 justify-content-center p-4" *ngFor="let team of teams">
+          <div class="teamsList__item">
+            <a class="teamsList__itemLink" [routerLink]="['team', team.id]"></a>
+            <img class="teamsList__itemImg" [src]="team.thumbnail" [alt]="team.name" />
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #noTeamsInLeague>
+      <div class="teamsList__info">Sorry, no Team informed in this league</div>
+    </ng-template>
+  </ng-container>
+  <ng-template #noLeagueSelected>
+    <div class="teamsList__info">Please select a League</div>
+  </ng-template>
+</div>

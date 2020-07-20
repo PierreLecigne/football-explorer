@@ -1,17 +1,22 @@
 import { Request, Response } from "express";
 
-import BaseService from "../services/base.service";
-
 class BaseController {
-  service;
+  service: any;
 
-  constructor(service) {
+  constructor(service: any) {
     this.service = service;
-    this.getAll = this.getAll.bind(this);
   }
 
-  async getAll(req: Request, res: Response) {
-    return res.status(200).send(await this.service.getAll(req.query));
+  getAll = async (req: Request, res: Response) => {
+    try {
+      const items = await this.service.getAll(req.query);
+      return res.status(200).send(items);
+    } catch (e) {
+      if (e.statusCode) {
+        return res.status(e.statusCode).send(e);
+      }
+      return res.status(500).send(e);
+    }
   }
 }
 

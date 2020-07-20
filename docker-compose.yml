@@ -9,6 +9,9 @@ services:
     networks:
       - backend
     container_name: fdj-server-container
+    volumes:
+      - ./server/src:/usr/src/app/src
+      - ./server/nodemon.json:/usr/src/app/nodemon.json
 
   db:
     image: mongo:4.2
@@ -17,24 +20,15 @@ services:
     networks:
       - backend
     container_name: fdj-db-container
-
-  # db_seed:
-  #   image: mongo:4.2
-  #   networks:
-  #     - backend
-  #   container_name: fdj-db-seed-container
-  #   depends_on:
-  #     - db
-  #   restart: on-failure
-  #   volumes:
-  #     - "dump:/db/sports"
-  #   command: mongorestore dump/ --db=football_explorer --drop
+    volumes:
+      - "./db/sports:/dump"
 
   app:
     restart: always
     build: app
     ports:
       - "4200:4200"
+      - "49153:49153"
     networks:
       - frontend
     container_name: fdj-app-container

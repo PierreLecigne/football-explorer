@@ -1,0 +1,28 @@
+<main>
+  <div class="container">
+    <div class="playersList">
+      <div class="mb-3">
+        <a routerLink="/league-browser" mat-button><mat-icon class="mr-2">arrow_back</mat-icon><span>Back to Leagues Browser</span></a>
+      </div>
+      <h1 class="d-flex justify-content-center">{{ team.name }}</h1>
+      <div *ngIf="team.players.length; else noTeamPlayers" class="row">
+        <div *ngFor="let player of team.players" class="col-12 col-md-6 col-xl-4 mb-3">
+          <div class="playersList__item">
+            <div class="playersList__itemImg">
+              <img width="100%" [src]="player.thumbnail" [alt]="player.name" />
+            </div>
+            <div class="playersList__itemDetails">
+              <div class="playersList__itemName">{{ player.name }}</div>
+              <div class="playersList__itemPosition">{{ player.position }}</div>
+              <div class="playersList__itemBirth">birthDate: {{ formatDate(player.born) }}</div>
+              <div class="playersList__itemPrice">price: {{ player.signin.amount | currency:player.signin.currency.toUpperCase() }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template #noTeamPlayers>
+        <div class="playersList__info">No Players in this Team</div>
+      </ng-template>
+    </div>
+  </div>
+</main>

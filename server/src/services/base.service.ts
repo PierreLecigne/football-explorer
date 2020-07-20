@@ -35,11 +35,12 @@ export default class BaseService {
         statusCode: 200,
         data: items,
       };
-    } catch (errors) {
-      return {
+    } catch (e) {
+      console.error(e)
+      throw {
         error: true,
         statusCode: 500,
-        errors
+        e
       };
     }
   }

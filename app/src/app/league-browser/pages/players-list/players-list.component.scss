@@ -1,0 +1,45 @@
+@import 'utils';
+
+.playersList {
+
+  &__item {
+    $i: &;
+    display: flex;
+    align-items: center;
+    padding: $spacer;
+    background-color: $gray-200;
+
+    &Details {
+      margin-left: $spacer;
+
+      & > div {
+        margin: $spacer / 4 0;
+        &:not(.playersList__itemName) {
+          font-style: italic;
+        }
+      }
+    }
+
+    &Name {
+      font-weight: 500;
+    }
+
+    &Position,
+    &Birth,
+    &Price {
+      color: $gray-600;
+    }
+
+    &Img {
+      max-width: 100px;
+      height: auto;
+    }
+  }
+
+  &__info {
+    display: flex;
+    justify-content: center;
+    margin-top: $spacer * 10;
+    color: $gray-500;
+  }
+}

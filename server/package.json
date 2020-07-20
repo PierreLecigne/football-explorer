@@ -6,7 +6,9 @@
   "scripts": {
     "start:dev": "nodemon",
     "build": "rimraf ./build && tsc",
-    "start": "npm run build && node build/index.js"
+    "start": "npm run build && node build/index.js",
+    "doc:generate": "grunt",
+    "postinstall": "npm run doc:generate"
   },
   "author": "pierre.lecigne@gmail.com",
   "license": "ISC",
@@ -17,6 +19,8 @@
     "@types/helmet": "0.0.47",
     "@types/mongoose": "^5.7.32",
     "@types/node": "^14.0.23",
+    "grunt": "^1.2.1",
+    "grunt-apidoc": "^0.11.0",
     "nodemon": "^2.0.4",
     "rimraf": "^3.0.2",
     "ts-node": "^8.10.2",

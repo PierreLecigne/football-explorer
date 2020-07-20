@@ -12,8 +12,16 @@ class LeagueController extends BaseController {
     super(service);
   }
 
-  async getLeagueTeams(req: Request, res: Response) {
-    return res.status(200).send(await this.service.getLeagueTeams(req.query));
+  getLeagueTeams = async (req: Request, res: Response) => {
+    try {
+      const teams = await this.service.getLeagueTeams(req.params);
+      return res.status(200).send(teams);
+    } catch (e) {
+      if (e.statusCode) {
+        return res.status(e.statusCode).send(e);
+      }
+      return res.status(500).send(e);
+    }
   }
 }
 
