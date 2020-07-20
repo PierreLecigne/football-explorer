@@ -54,13 +54,6 @@ export default class LeagueService extends BaseService {
         }
       ]);
 
-      if (items.length <= 0) {
-        throw {
-          error: true,
-          statusCode: 404,
-          e: 'unknown League ID'
-        };
-      }
       return {
         error: false,
         statusCode: 200,
