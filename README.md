@@ -17,5 +17,5 @@ All components of this application work with Docker.
 
 # More
 
-* [Frontend App README](app/README)
-* [Backend App README](server/README)
+* [Frontend App README](app/README.md)
+* [Backend App README](server/README.md)
